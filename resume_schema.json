@@ -3,6 +3,29 @@
   "title": "resume_schema",
   "type": "object",
   "additionalProperties": false,
+
+  "definitions": {
+    "BrandRelationship": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "brand": { "type": "string" },
+        "context": { "type": ["string", "null"] },
+        "via_agency": { "type": ["string", "null"] }
+      },
+      "required": ["brand"]
+    },
+    "AgencyRelationship": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "agency": { "type": "string" },
+        "context": { "type": ["string", "null"] }
+      },
+      "required": ["agency"]
+    }
+  },
+
   "properties": {
     "full_name": { "type": ["string", "null"] },
     "linkedin_url": { "type": ["string", "null"] },
@@ -13,14 +36,28 @@
     "current_title": { "type": ["string", "null"] },
     "current_company": { "type": ["string", "null"] },
     "location": { "type": ["string", "null"] },
+
     "roles": { "type": "array", "items": { "type": "string" } },
     "companies": { "type": "array", "items": { "type": "string" } },
     "product_types": { "type": "array", "items": { "type": "string" } },
     "verticals": { "type": "array", "items": { "type": "string" } },
-    "relationships": { "type": "array", "items": { "type": "string" } },
+
+    "brands": { "type": "array", "items": { "type": "string" } },
+    "brand_relationships": { "type": "array", "items": { "$ref": "#/definitions/BrandRelationship" } },
+
+    "agencies": { "type": "array", "items": { "type": "string" } },
+    "agency_relationships": { "type": "array", "items": { "$ref": "#/definitions/AgencyRelationship" } },
+
+    "relationships": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Deprecated: legacy mixed list of brands/agencies. Prefer brands/brand_relationships and agencies/agency_relationships."
+    },
+
     "education_summary": { "type": ["string", "null"] },
     "parser_version": { "type": "string" },
     "warnings": { "type": "array", "items": { "type": "string" } }
   },
+
   "required": ["parser_version"]
 }
