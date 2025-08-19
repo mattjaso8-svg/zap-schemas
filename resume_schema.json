@@ -1,0 +1,26 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "resume_schema",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "full_name": { "type": ["string", "null"] },
+    "linkedin_url": { "type": ["string", "null"] },
+    "linkedin_url_norm": { "type": ["string", "null"] },
+    "email": { "type": ["string", "null"] },
+    "phone": { "type": ["string", "null"] },
+    "phone_last10": { "type": ["string", "null"] },
+    "current_title": { "type": ["string", "null"] },
+    "current_company": { "type": ["string", "null"] },
+    "location": { "type": ["string", "null"] },
+    "roles": { "type": "array", "items": { "type": "string" } },
+    "companies": { "type": "array", "items": { "type": "string" } },
+    "product_types": { "type": "array", "items": { "type": "string" } },
+    "verticals": { "type": "array", "items": { "type": "string" } },
+    "relationships": { "type": "array", "items": { "type": "string" } },
+    "education_summary": { "type": ["string", "null"] },
+    "parser_version": { "type": "string" },
+    "warnings": { "type": "array", "items": { "type": "string" } }
+  },
+  "required": ["parser_version"]
+}
